@@ -30,6 +30,7 @@ CREATE TABLE books
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+
 -- ================================================
 -- TABLE 3: genres
 -- name is UNIQUE because each genre appears only once
