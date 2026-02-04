@@ -16,14 +16,13 @@ CREATE TABLE authors
 
 -- ================================================
 -- TABLE 2: books
--- isbn is UNIQUE because no two books share the same ISBN
 -- description max 200 characters
 -- ================================================
 CREATE TABLE books
 (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
-    isbn VARCHAR(17) UNIQUE NOT NULL,
+    isbn VARCHAR(17) UNIQUE,
     description VARCHAR(200),
     publication_date DATE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -47,7 +46,7 @@ CREATE TABLE genres
 -- ================================================
 CREATE TABLE books_authors
 (
-    book_id INTEGER REFERENCES books(id)   ON DELETE CASCADE,
+    book_id INTEGER REFERENCES books(id) ON DELETE CASCADE,
     author_id INTEGER REFERENCES authors(id) ON DELETE CASCADE,
     PRIMARY KEY (book_id, author_id)
 );
@@ -62,3 +61,4 @@ CREATE TABLE books_genres
     genre_id INTEGER REFERENCES genres(id) ON DELETE CASCADE,
     PRIMARY KEY (book_id, genre_id)
 );
+
