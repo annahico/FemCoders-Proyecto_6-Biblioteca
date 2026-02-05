@@ -17,7 +17,7 @@ public class MainMenu {
             System.out.println("0. Exit");
 
            
-            // option = ConsoleUtils.userOption("Select: ");
+            option = ConsoleUtils.userOption("Select: ");
 
             selected(option);
         }
