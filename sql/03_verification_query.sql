@@ -234,10 +234,10 @@ FROM (
 -- ================================================
 SELECT '=== VERIFICACIÓN 12 ===' AS titulo;
 
-SELECT 
+SELECT
     isbn,
     COUNT(*) AS veces,
-    CASE 
+    CASE
         WHEN COUNT(*) > 1 THEN 'DUPLICADO'
         ELSE 'ÚNICO'
     END AS estado
@@ -246,8 +246,8 @@ GROUP BY isbn
 HAVING COUNT(*) > 1
 ORDER BY veces DESC, isbn;
 
-SELECT 
-    CASE 
+SELECT
+    CASE
         WHEN COUNT(*) = 0 THEN 'NO HAY ISBNs DUPLICADOS'
         ELSE CONCAT('HAY ', COUNT(*)::text, ' ISBNs DUPLICADOS')
     END AS resultado_final
