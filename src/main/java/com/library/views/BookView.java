@@ -7,7 +7,7 @@ public class BookView {
 
     // Lista completa con todos los campos
     public void displayAllBooks(List<Book> books) {
-        System.out.println("\n--- 📚 LIBRARY INVENTORY ---");
+        System.out.println("\n---LIBRARY INVENTORY ---");
         if (books.isEmpty()) {
             System.out.println("No books found.");
         } else {
@@ -19,7 +19,7 @@ public class BookView {
 
     // Mostrar por Género sin descripción.
     public void displayBooksByGenre(List<Book> books, String genre) {
-        System.out.println("\n--- 🔍 GENRE: " + genre.toUpperCase() + " ---");
+        System.out.println("\n--- GENRE: " + genre.toUpperCase() + " ---");
         if (books.isEmpty()) {
             System.out.println("No books found for this genre.");
         } else {
