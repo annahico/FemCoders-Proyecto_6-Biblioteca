@@ -31,7 +31,7 @@ public class BookRepositoryImpl implements BookRepository{
                         book.setId(id);
                       }}
             } catch (SQLException e){
-                throw new RuntimeException("error" + e.getMessage());
+                throw new RuntimeException("error in book creation" + e.getMessage());
             }
     }
     @Override
@@ -49,17 +49,28 @@ public class BookRepositoryImpl implements BookRepository{
                         GROUP BY b.id, b.title, b.isbn, b.description, b.created_at, b.updated_at, a.full_name;
                          """;
         Book book = null;
-
         try( 
             Connection connection = DBManager.getConnection(); 
             PreparedStatement st = connection.prepareStatement(sql)){
 
                 st.setInt(1,id);
 
-                st.executeUpdate();
+                try(ResultSet rs = st.executeQuery()){
+                     book = Book.builder()
+                    .id(rs.getInt("id"))
+                    .title(rs.getString("title"))
+                    .isbn(rs.getString("isbn"))
+                    .description(rs.getString("description"))
+                    .createdAt(rs.getTimestamp("created_at").toLocalDateTime())
+                    .updatedAt(rs.getTimestamp("updated_at").toLocalDateTime())
+                    //faltan los autores y géneros
+                    .build();
+                                 
+                }
             } catch (SQLException e){
-                throw new RuntimeException("error" + e.getMessage());
+                throw new RuntimeException("error in get the book" + e.getMessage());
             }
+            return book;
     }
 
     @Override
