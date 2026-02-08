@@ -1,5 +1,7 @@
 package com.library.repository;
 
+import java.util.List;
+
 import com.library.model.Book;
 
 public interface BookRepository {
@@ -10,11 +12,17 @@ public interface BookRepository {
 
     void saveBookGenres(Book book);
 
+    List<Book> getBookList();
+
     Book getBookbyId (int id);
 
-    Book getBookbyTitle(String title);
+    List<Book> getBookbyTitle(String title);
 
     Book getBookByIsbn(String isbn);
+  
+    List<Book> getBooksByAuthor(String name);
+
+    List<Book> getBooksByGenre(String genre);
 
     void updateBook(Book book);
 
